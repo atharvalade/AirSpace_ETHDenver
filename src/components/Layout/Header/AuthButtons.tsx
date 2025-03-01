@@ -6,7 +6,12 @@ import { Icon } from "@iconify/react";
 import FlowAuthButton from "@/components/Auth/FlowAuthButton";
 import ZkSyncAuthButton from "@/components/Auth/ZkSyncAuthButton";
 
-const AuthButtons = () => {
+interface AuthButtonsProps {
+  onSignInClick?: () => void;
+  onSignUpClick?: () => void;
+}
+
+const AuthButtons = ({ onSignInClick, onSignUpClick }: AuthButtonsProps) => {
   return (
     <div className="flex items-center gap-4">
       <ZkSyncAuthButton />

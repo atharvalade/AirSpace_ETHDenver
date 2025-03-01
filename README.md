@@ -1,6 +1,6 @@
 # AirSpace: Blockchain-Powered Air Rights Marketplace
 
-![AirSpace Logo](public/images/logo.png)
+![AirSpace Logo]
 
 AirSpace is the first blockchain-powered marketplace for buying, selling, and renting air rights. We're unlocking a multi-trillion dollar asset class by enabling property owners to tokenize the valuable space above their buildings, while helping hotels, developers, and businesses protect their views and secure development opportunities. Using verifiable credentials and privacy technology, we've transformed a complex legal process into a transparent, accessible marketplace.
 
@@ -107,11 +107,6 @@ AirSpace/
 AirSpace uses the following Flow wallet address for testing:
 ```
 0x4f50ec69447dbf04
-```
-
-Recovery phrase:
-```
-invest cotton bulb top enough cloth side lion dance permit damage random
 ```
 
 ## 🔄 Core Workflows
@@ -224,19 +219,6 @@ Air rights NFTs use the following data format:
 }
 ```
 
-## 🤝 Contributing
-
-We welcome contributions to AirSpace! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🌐 Resources
 
@@ -247,8 +229,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📧 Contact
 
-For questions or support, please contact the AirSpace team at [contact@airspace.xyz](mailto:contact@airspace.xyz).
+For questions or support, please contact me at ladeatharva@gmail.com
 
 ---
 
-Built with ❤️ at ETHDenver 2024 
+Built with ❤️ at ETHDenver 2025 

@@ -141,7 +141,7 @@ const saveNFTsInOriginalFormat = (nfts: NFT[], walletAddress: string): void => {
     const originalFormatData = {
       data: nftsWithOriginalFormat.map(nft => ({
         tokenId: nft.token_id,
-        ipfsHash: nft.metadata.ipfsHash || '',
+        ipfsHash: nft.metadata?.ipfsHash || '',
         metadata: nft.metadata
       })),
       wallet: walletAddress
@@ -220,7 +220,7 @@ export const getOriginalNFTsFormat = (nfts: NFT[], walletAddress: string = flowC
   const originalFormat = {
     data: nfts.map(nft => ({
       tokenId: nft.token_id,
-      ipfsHash: nft.metadata.ipfsHash || '',
+      ipfsHash: nft.metadata?.ipfsHash || '',
       metadata: nft.metadata
     })),
     wallet: walletAddress
