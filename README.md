@@ -1,20 +1,110 @@
-# AirSpace NFT Minting and Retrieval
+# AirSpace: Blockchain-Powered Air Rights Marketplace
 
-This project provides scripts for minting NFTs on the Flow blockchain and retrieving them in the exact same JSON format.
+![AirSpace Logo](public/images/logo.png)
 
-## Prerequisites
+AirSpace is the first blockchain-powered marketplace for buying, selling, and renting air rights. We're unlocking a multi-trillion dollar asset class by enabling property owners to tokenize the valuable space above their buildings, while helping hotels, developers, and businesses protect their views and secure development opportunities. Using verifiable credentials and privacy technology, we've transformed a complex legal process into a transparent, accessible marketplace.
 
-Before using these scripts, make sure you have:
+## 🚀 Overview
 
-1. Node.js and npm installed
-2. Flow CLI installed (for deploying contracts)
-3. A Flow testnet account with some FLOW tokens
-4. The AirSpaceNFT contract deployed to your Flow account
+Air rights represent the legal right to use, develop, or control the empty space above a property. These rights are traditionally difficult to trade due to complex legal processes and lack of transparency. AirSpace solves this by:
 
-## Configuration
+1. **Tokenizing Air Rights**: Converting legal air rights into NFTs on the Flow blockchain
+2. **Creating a Marketplace**: Enabling easy buying, selling, and renting of these rights
+3. **Ensuring Verification**: Using zkSync and verifiable credentials to validate ownership
+4. **Simplifying Transactions**: Streamlining a complex legal process into a user-friendly platform
 
-The project is configured to use the following wallet address:
+## 🛠️ Technology Stack
 
+AirSpace leverages cutting-edge blockchain and Web3 technologies:
+
+### Flow Blockchain & Cadence
+- **NFT Minting**: Air rights are represented as NFTs on the Flow blockchain
+- **Smart Contracts**: Written in Cadence, Flow's resource-oriented programming language
+- **Metadata Storage**: Comprehensive property details stored on-chain
+- **Transaction Management**: Secure and efficient transaction processing
+
+### zkSync & Zero-Knowledge Proofs
+- **zkSync Era**: Layer 2 scaling solution for Ethereum
+- **Passkey Authentication**: Secure wallet connection without seed phrases
+- **Smart Accounts**: Each user gets a smart account on zkSync Era
+
+### zkVerify
+- **Zero-Knowledge Verification**: Verify property details without revealing sensitive information
+- **Proof Generation**: Create cryptographic proofs using the Groth16 proving system
+- **Verification System**: Validate proofs on-chain for trustless verification
+
+### Verifiable Credentials
+- **Humanity Protocol**: Verify real-world identity while preserving privacy
+- **Credential Issuance**: Issue verifiable credentials for property ownership
+- **Credential Verification**: Validate credentials without compromising privacy
+
+### Frontend & User Experience
+- **Next.js**: React framework for the web application
+- **Tailwind CSS**: Utility-first CSS framework for styling
+- **Framer Motion**: Animation library for smooth transitions
+- **Mapbox**: Interactive maps for property visualization
+
+## 🏗️ Project Structure
+
+```
+AirSpace/
+├── src/
+│   ├── app/                  # Next.js app directory
+│   │   ├── my-nfts/          # NFT collection display
+│   │   ├── verify/           # Verification interface
+│   │   └── listings/         # Air rights listings
+│   ├── components/           # Reusable UI components
+│   ├── contracts/            # Blockchain smart contracts
+│   │   ├── AirSpaceNFT.cdc   # Flow NFT contract
+│   │   └── ZkSyncETHTransfer.sol # zkSync contract
+│   ├── context/              # React context providers
+│   ├── services/             # API and blockchain services
+│   │   ├── flowNftService.ts # Flow NFT operations
+│   │   ├── zkVerifyService.ts # ZK verification
+│   │   └── humanityProtocol.ts # Verifiable credentials
+│   └── scripts/              # Utility scripts
+│       ├── mintNFTs.sh       # NFT minting script
+│       └── exportNFTs.sh     # NFT export script
+├── public/                   # Static assets
+└── package.json              # Project dependencies
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16+)
+- Flow CLI (for contract deployment)
+- Flow testnet account
+- zkSync Era Sepolia testnet account
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/atharvalade/AirSpace_ETHDenver.git
+   cd AirSpace_ETHDenver
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your API keys and configuration
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### Flow Wallet Configuration
+
+AirSpace uses the following Flow wallet address for testing:
 ```
 0x4f50ec69447dbf04
 ```
@@ -24,89 +114,141 @@ Recovery phrase:
 invest cotton bulb top enough cloth side lion dance permit damage random
 ```
 
-## Scripts Overview
+## 🔄 Core Workflows
 
-### Minting NFTs
+### Minting Air Rights NFTs
 
-The `mintNFTs.sh` script allows you to mint NFTs to the Flow blockchain:
+Property owners can tokenize their air rights by:
 
-```bash
-# Make the script executable (if not already)
-chmod +x src/scripts/mintNFTs.sh
-
-# Run with default file path (src/data/nfts-data.json)
-./src/scripts/mintNFTs.sh
-
-# Run with a custom file path
-./src/scripts/mintNFTs.sh --file=path/to/your/nft-data.json
-```
-
-### Exporting NFTs
-
-The `exportNFTs.sh` script allows you to retrieve NFTs from the Flow blockchain and export them in the original JSON format:
+1. Creating a listing with property details
+2. Verifying ownership through verifiable credentials
+3. Generating a zero-knowledge proof of property details
+4. Minting an NFT on the Flow blockchain
 
 ```bash
-# Make the script executable (if not already)
-chmod +x src/scripts/exportNFTs.sh
-
-# Run with default output path (src/data/nfts-data-exported.json)
-./src/scripts/exportNFTs.sh
-
-# Run with a custom output path
-./src/scripts/exportNFTs.sh --output=path/to/your/output.json
+# Mint NFTs from JSON data
+npm run mint-nfts
 ```
 
-## NFT Data Format
+### Buying Air Rights
 
-The NFT data should be in the following format:
+Developers and businesses can purchase air rights by:
 
-```json
-{
-  "data": [
-    {
-      "tokenId": 2,
-      "ipfsHash": "QmUhnjFEszhg6Qkk6hQYNQxKK1Ghhn6DRM26CjLXFv18RY",
-      "metadata": {
-        "title": "Niagara Falls Hotel View Rights",
-        "name": "AirSpace - Niagara Falls Hotel View Rights",
-        "description": "Secure the pristine view of Niagara Falls by purchasing air rights above the existing hotel structure. Prime location with unobstructed views of the falls.",
-        "attributes": [
-          {"trait_type": "Property Address", "value": "6650 Niagara Parkway, Niagara Falls, ON L2G 0L0"},
-          {"trait_type": "Current Height", "value": 10},
-          {"trait_type": "Maximum Height", "value": 25},
-          {"trait_type": "Available Floors", "value": 15},
-          {"trait_type": "Price", "value": 250000}
-        ],
-        "properties": {"coordinates": {"latitude": 43.0962, "longitude": -79.0377}}
-      }
-    },
-    // Add more NFTs here...
-  ],
-  "wallet": "0x4f50ec69447dbf04"
+1. Browsing available listings
+2. Connecting their Flow wallet
+3. Verifying their identity
+4. Completing the purchase transaction
+
+### Verifying Ownership
+
+All air rights can be verified using:
+
+1. Zero-knowledge proofs for privacy-preserving verification
+2. On-chain verification of NFT ownership
+3. Verifiable credentials for real-world identity verification
+
+```bash
+# Export and verify NFTs
+npm run export-nfts
+```
+
+## 🧪 Zero-Knowledge Verification
+
+AirSpace uses zkVerify for privacy-preserving verification:
+
+1. **Generate Proof**: Create a ZK proof of property details
+2. **Verify Proof**: Validate the proof without revealing sensitive information
+3. **On-Chain Verification**: Store verification results on the blockchain
+
+## 📜 Smart Contracts
+
+### AirSpaceNFT (Flow)
+
+The AirSpaceNFT contract defines the structure for air rights NFTs:
+
+```cadence
+pub resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver {
+    pub let id: UInt64
+    pub let propertyAddress: String
+    pub let currentHeight: UInt64
+    pub let maximumHeight: UInt64
+    pub let availableFloors: UInt64
+    pub let price: UFix64
+    pub let mintedAt: UFix64
+    
+    // ... implementation
 }
 ```
 
-## File Structure
+### ZkSyncETHTransfer (zkSync Era)
 
-- `src/data/nfts-data.json`: The input NFT data file
-- `src/data/nfts-data-backup.json`: A backup of the input NFT data
-- `src/data/nfts-data-minted.json`: The NFT data after minting
-- `src/data/minting-results.json`: The results of the minting process
-- `src/data/nfts-data-exported.json`: The exported NFT data in the original format
-- `src/data/nfts-data-retrieved.json`: The NFT data retrieved from the blockchain
+The ZkSyncETHTransfer contract handles ETH transfers on zkSync Era:
 
-## Troubleshooting
+```solidity
+contract ZkSyncETHTransfer {
+    event Transfer(address indexed from, address indexed to, uint256 amount);
+    
+    // ... implementation
+}
+```
 
-### Common Issues
+## 🔐 Authentication
 
-- **Transaction Errors**: If you encounter transaction errors, check that your Flow account has sufficient funds and that the contract is properly deployed.
-- **Module Not Found Errors**: If you see errors about modules not being found, make sure you have installed all dependencies with `npm install`.
-- **Permission Denied**: If you get "Permission denied" when trying to run the scripts, make sure they are executable with `chmod +x src/scripts/*.sh`.
+AirSpace offers multiple authentication methods:
 
-### Getting Help
+1. **Flow Wallet**: Connect using FCL (Flow Client Library)
+2. **zkSync SSO**: Passkey authentication without seed phrases
+3. **Verifiable Credentials**: Identity verification through Humanity Protocol
 
-If you encounter any issues, please:
+## 📊 Data Format
 
-1. Check the Flow documentation: https://docs.onflow.org/
-2. Join the Flow Discord community: https://discord.gg/flow
-3. File an issue in the AirSpace repository 
+Air rights NFTs use the following data format:
+
+```json
+{
+  "tokenId": 2,
+  "ipfsHash": "QmUhnjFEszhg6Qkk6hQYNQxKK1Ghhn6DRM26CjLXFv18RY",
+  "metadata": {
+    "title": "Niagara Falls Hotel View Rights",
+    "name": "AirSpace - Niagara Falls Hotel View Rights",
+    "description": "Secure the pristine view of Niagara Falls by purchasing air rights above the existing hotel structure.",
+    "attributes": [
+      {"trait_type": "Property Address", "value": "6650 Niagara Parkway, Niagara Falls, ON L2G 0L0"},
+      {"trait_type": "Current Height", "value": 10},
+      {"trait_type": "Maximum Height", "value": 25},
+      {"trait_type": "Available Floors", "value": 15},
+      {"trait_type": "Price", "value": 250000}
+    ],
+    "properties": {"coordinates": {"latitude": 43.0962, "longitude": -79.0377}}
+  }
+}
+```
+
+## 🤝 Contributing
+
+We welcome contributions to AirSpace! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🌐 Resources
+
+- [Flow Documentation](https://docs.onflow.org/)
+- [zkSync Documentation](https://docs.zksync.io/)
+- [Humanity Protocol](https://humanityprotocol.com/)
+- [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/)
+
+## 📧 Contact
+
+For questions or support, please contact the AirSpace team at [contact@airspace.xyz](mailto:contact@airspace.xyz).
+
+---
+
+Built with ❤️ at ETHDenver 2024 
